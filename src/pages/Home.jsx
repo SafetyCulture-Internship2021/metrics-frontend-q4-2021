@@ -30,6 +30,9 @@ export const Home = () => {
     }
 
     return (<>Welcome to the app {account.account_name}
-    <br/><br/> This is the metrics front end that displays information
+    <div>
+        <br/> This is the metrics front end that displays information
+
+    </div>
     </>);
 }

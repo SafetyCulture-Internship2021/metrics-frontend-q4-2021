@@ -9,6 +9,8 @@ import { MetricsRouter } from "./Router";
 import { Navigation } from "./components/Navigation";
 import { AuthProvider } from "./hooks/auth";
 
+
+
 function App() {
     return (
         <StyledContainer maxWidth="lg">

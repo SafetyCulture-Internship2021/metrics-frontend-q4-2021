@@ -4,6 +4,7 @@ import styled from "styled-components"
 import {Home} from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import {useAuth} from "../hooks/auth";
+import "../App.css";
 
 const ErrorType = Object.seal({
     None: "none",
