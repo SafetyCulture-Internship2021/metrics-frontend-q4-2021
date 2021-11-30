@@ -3,12 +3,13 @@
     padding: 0;
 
 }
-
+/*"css-hip9hq-MuiPaper-root-MuiAppBar-root" was found suing inspect on the browser*/
 header.css-hip9hq-MuiPaper-root-MuiAppBar-root{
     background-color: rebeccapurple;
     color: yellow;
     text-align: center;
 }
+/*"css-1y942vo-MuiButtonBase-root-MuiButton-root" was found using inspect on the browser*/
 button.css-1y942vo-MuiButtonBase-root-MuiButton-root{
     background-color: black;
 }
