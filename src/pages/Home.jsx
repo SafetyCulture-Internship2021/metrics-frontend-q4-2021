@@ -6,11 +6,10 @@ import "../App.css";
 
 export const Home = () => {
     const { authenticatedRequest } = useAuth();
-
     const [isLoading, setIsLoading] = useState(true);
     const [account, setAccount] = useState(null);
-   /* const [newData, setNewData] = useState(null);*/
-    /*const [ping, setPingData] = useState(null);*/
+    const [newData, setNewData] = useState(null);
+    const [pingData, setPingData] = useState(null);
 
 
     useEffect(() => {
@@ -19,18 +18,18 @@ export const Home = () => {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
-                 });/*
+                 });
                  await axios.get('/services').then(res =>{
                      const newData = JSON.stringify(res.data);
                      setNewData(newData)
                      return newData;
-                 });*/
-                /*await axios.get('/metrics/input').then(res => {
+                 });
+                await axios.get('/metrics/input').then(res => {
                     console.log(res);
-                    const ping = res.data;
-                    setPingData(ping)
-                    return ping;
-                })*/
+                    const pingData = res.data;
+                    setPingData(pingData)
+                    return pingData;
+                })
 
 
 
@@ -42,15 +41,16 @@ export const Home = () => {
     if (isLoading) {
         return <div>Loading...</div>;
     }
+    console.log(pingData)
+    return (<>Welcome to the app {account.account_name}. service available( {newData} )
 
-    return (<>Welcome to the app {account.account_name}.
     <div>
+
         <br/> This is the metrics front end that displays information
-        {/*<br/> name: {ping.pod_id}
-        <br/> time stamp: {ping.time_stamp}
-        <br/>http status code: {JSON.stringify(ping.http_status)}
-        <br/> avg latency: {ping.avg_latency}
-        <br/>99th percentile: {ping.percentile_99}*/}
+        <br/> id: {pingData.pod_id}
+        <br/> time stamp: {pingData.time_stamp}
+        <br/>http status code: {JSON.stringify(pingData.http_status)}
+        <br/> avg latency: {pingData.avg_latency}
 
     </div>
     </>);
