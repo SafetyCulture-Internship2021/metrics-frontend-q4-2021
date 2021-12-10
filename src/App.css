@@ -5,18 +5,18 @@
 }
 /*"css-hip9hq-MuiPaper-root-MuiAppBar-root" was found suing inspect on the browser*/
 header.css-hip9hq-MuiPaper-root-MuiAppBar-root{
-    background-color: rebeccapurple;
+    background-color: #6559ff;
     color: black;
     text-align: center;
 }
 /*"css-1y942vo-MuiButtonBase-root-MuiButton-root" was found using inspect on the browser*/
 button.css-1y942vo-MuiButtonBase-root-MuiButton-root{
-    background-color: black;
-    color: yellow;
+    background-color: yellow;
+    color: black;
 }
 html,
 body{
-    font-family: Arial, sans-serif;
+    font-family: Roboto, sans-serif;
     background-repeat: no-repeat;
     background-position: center;
     text-align: left;
@@ -24,7 +24,7 @@ body{
     font-size: larger;
 }
 .css-q5fqw0{
-    background-color: cornflowerblue;
+    background-color: white;
 }
 
 
