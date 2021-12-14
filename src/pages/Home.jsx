@@ -2,14 +2,16 @@ import { useState, useEffect } from "react"
 import axios from "axios";
 import { useAuth } from "../hooks/auth";
 import "../App.css";
+import Graph from "../components/Graph";
+
+
 
 
 export const Home = () => {
     const { authenticatedRequest } = useAuth();
     const [isLoading, setIsLoading] = useState(true);
     const [account, setAccount] = useState(null);
-    const [newData, setNewData] = useState(null);
-    const [pingData, setPingData] = useState(null);
+    const [pingData, setPingData] = useState(null)
 
 
     useEffect(() => {
@@ -18,40 +20,45 @@ export const Home = () => {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
-                 });
-                 await axios.get('/services').then(res =>{
-                     const newData = JSON.stringify(res.data);
-                     setNewData(newData)
-                     return newData;
-                 });
-                await axios.get('/metrics/input').then(res => {
-                    console.log(res);
-                    const pingData = res.data;
-                    setPingData(pingData)
-                    return pingData;
-                })
+            });
+            /*await axios.get('/services').then(res =>{
+                const newData = JSON.stringify(res.data);
+                setNewData(newData)
+                console.log(res)
+                return newData;
+
+            });*/
+            await axios.get('/metrics/test').then(res => {
+                console.log(res);
+                const pingData = res.data;
+                setPingData(pingData)
+                return pingData;
+            });
 
 
 
             setAccount(data);
             setIsLoading(false);
-        });
+
+            });
+
     }, [authenticatedRequest]);
 
     if (isLoading) {
         return <div>Loading...</div>;
     }
-    console.log(pingData)
-    return (<>Welcome to the app {account.account_name}. service available( {newData} )
 
-    <div>
 
-        <br/> This is the metrics front end that displays information
-        <br/> id: {pingData.pod_id}
-        <br/> time stamp: {pingData.time_stamp}
-        <br/>http status code: {JSON.stringify(pingData.http_status)}
-        <br/> avg latency: {pingData.avg_latency}
 
-    </div>
-    </>);
+
+return (
+    <div>Welcome to the app {account.account_name}. service available( {} )
+     <div><br/> This is the metrics front end that displays information
+
+         <Graph/>
+
+
+
+     </div>
+    </div>);
 }
