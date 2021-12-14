@@ -42,16 +42,7 @@ export const Home = () => {
         return <div>Loading...</div>;
     }
     console.log(pingData)
-    return (<>Welcome to the app {account.account_name}. service available( {newData} )
+    return (<>Welcome to the app {account.account_name}. service available( {} )
 
-    <div>
-
-        <br/> This is the metrics front end that displays information
-        <br/> id: {pingData.pod_id}
-        <br/> time stamp: {pingData.time_stamp}
-        <br/>http status code: {JSON.stringify(pingData.http_status)}
-        <br/> avg latency: {pingData.avg_latency}
-
-    </div>
     </>);
 }

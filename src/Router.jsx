@@ -1,10 +1,10 @@
 import React from "react";
-import { Navigate, Route, Routes } from "react-router-dom"
+import { Route, Routes } from "react-router-dom"
 
 import { Home } from "./pages/Home";
 import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
-
+import { NotFound } from "./pages/NotFound"
 import { AuthGuard } from "./hooks/auth";
 
 export const MetricsRouter = () => {
@@ -29,7 +29,7 @@ export const MetricsRouter = () => {
                 path="/register"
                 element={<Register/>}
             />
-            <Route path="*" element={<Navigate to="/home"/>}/>
+            <Route path="*" element={<NotFound/>}/>
         </Routes>
     )
 }

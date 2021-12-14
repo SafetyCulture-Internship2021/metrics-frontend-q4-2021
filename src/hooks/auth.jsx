@@ -29,9 +29,9 @@ export function AuthProvider({children}) {
     }
 
     // We need to be able to clean the session when it is done
-    const cleanSession = () => {
-        updateRefreshToken();
-        updateAccessToken();
+    const cleanSession = (refresh, access) => {
+        updateRefreshToken(refresh);
+        updateAccessToken(access);
         navigate("/login")
     };
 
@@ -46,7 +46,7 @@ export function AuthProvider({children}) {
           return access_token;
       } catch {
           // If attempting to refresh the access token fails, redirect to the login page
-          cleanSession();
+          cleanSession(refreshToken);
       }
     };
 
