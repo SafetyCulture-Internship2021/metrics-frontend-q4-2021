@@ -3,6 +3,7 @@ import axios from "axios";
 import { useAuth } from "../hooks/auth";
 import "../App.css";
 import Graph from "../components/Graph";
+import Dropdown from "../components/Dropdown";
 
 
 
@@ -12,6 +13,7 @@ export const Home = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [account, setAccount] = useState(null);
     const [pingData, setPingData] = useState(null)
+    const [selected, setSelected] = useState('Services')
 
 
     useEffect(() => {
@@ -55,7 +57,8 @@ return (
     <div>Welcome to the app {account.account_name}. service available( {} )
      <div><br/> This is the metrics front end that displays information
 
-         <Graph/>
+        <Dropdown selected={selected} setSelected={setSelected}/>  
+        <Graph/>
 
 
 
