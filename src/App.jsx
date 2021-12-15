@@ -1,7 +1,8 @@
 import React from "react";
 import {BrowserRouter} from "react-router-dom";
 import styled from "styled-components";
-import {Box} from "@mui/material";
+import { Box, Button } from "@mui/material";
+import Dropdown from "./components/Dropdown";
 
 
 import "./App.css";
@@ -20,7 +21,7 @@ function App() {
                     <Box sx={{
                         padding: '1rem'
                     }}>
-
+                        <Button color="inherit" onClick={Dropdown}>Services</Button>
                         <MetricsRouter/>
                     </Box>
                 </AuthProvider>
