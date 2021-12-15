@@ -1,32 +1,72 @@
-*{
-    margin: 0;
-    padding: 0;
-
+* {
+  margin: 0;
+  padding: 0;
 }
 /*"css-hip9hq-MuiPaper-root-MuiAppBar-root" was found suing inspect on the browser*/
-header.css-hip9hq-MuiPaper-root-MuiAppBar-root{
-    background-color: #6559ff;
-    color: black;
-    text-align: center;
+header.css-hip9hq-MuiPaper-root-MuiAppBar-root {
+  background-color: #6559ff;
+  color: black;
+  text-align: center;
 }
 /*"css-1y942vo-MuiButtonBase-root-MuiButton-root" was found using inspect on the browser*/
-button.css-1y942vo-MuiButtonBase-root-MuiButton-root{
-    background-color: yellow;
-    color: black;
+button.css-1y942vo-MuiButtonBase-root-MuiButton-root {
+  background-color: yellow;
+  color: black;
 }
 html,
-body{
-    font-family: Roboto, sans-serif;
-    background-repeat: no-repeat;
-    background-position: center;
-    text-align: left;
-    color: black;
-    font-size: larger;
+body {
+  font-family: Roboto, sans-serif;
+  background-repeat: no-repeat;
+  background-position: center;
+  text-align: left;
+  color: black;
+  font-size: larger;
 }
-.css-q5fqw0{
-    background-color: white;
+.css-q5fqw0 {
+  background-color: white;
 }
 
+.container {
+  width: 100%;
+  height: 100vh;
+}
 
+.dropdown {
+  width: 300px;
+  user-select: none;
+  margin-left: 1300px;
+  position: relative;
+}
 
+.dropdown .dropdown-btn {
+  padding: 15px 20px;
+  background: #fff;
+  box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
+  font-weight: inherit;
+  color: #333;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  justify-content: space-between;
+}
 
+.dropdown .dropdown-content {
+  position: absolute;
+  top: 110px;
+  padding: 5px;
+  background: #fff;
+  box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
+  font-weight: 300px;
+  color: #333;
+  width: 90%;
+}
+
+.dropdown .dropdown-content .dropdown-item {
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.dropdown .dropdown-content .dropdown-item:hover {
+  background: #f4f4f4;
+}

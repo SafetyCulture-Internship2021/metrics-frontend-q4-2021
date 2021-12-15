@@ -1,11 +1,30 @@
-import React, { useState } from "react";
-import MenuItems from './MenuItems';
-import { Link } from 'react-router-dom'; 
+import { useState } from 'react';   
 
-function Dropdown() {
-    const [click, setClick] = useState(false)
+function Dropdown( {selected, setSelected}) {
+    const [isActive, setIsActive] = useState(false);
+    const options = ['Authorization', 'Users', 'Cart', 'Suggestions', 'Billing']
 
-    const handleClick = () => setClick(!click) 
+    return (
+        <div className='dropdown'>
+            <div className='dropdown-btn' onClick={(e) => setIsActive(!isActive)} >
+                {selected} <i class="fa">&#xf0d7;</i>
+            </div>
+
+            {isActive && (
+                <div className='dropdown-content'>
+                    {options.map((option) => (
+                        <div
+                            onClick={(e)  => {
+                                setSelected(option);
+                                setIsActive(false);
+                            }}
+                            className='dropdown-item'>{option}
+                        </div>
+                    ))}
+                </div> 
+            )}
+        </div>
+    );
 }
 
 export default Dropdown;

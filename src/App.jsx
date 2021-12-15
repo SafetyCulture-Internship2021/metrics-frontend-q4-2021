@@ -1,8 +1,9 @@
 import React from "react";
 import {BrowserRouter} from "react-router-dom";
 import styled from "styled-components";
-import { Box, Button } from "@mui/material";
+import { Box } from "@mui/material";
 import Dropdown from "./components/Dropdown";
+import { useState } from "react";
 
 
 import "./App.css";
@@ -13,6 +14,7 @@ import {AuthProvider} from "./hooks/auth";
 
 
 function App() {
+    const [selected, setSelected] = useState('Services')
     return (
         <StyledContainer maxWidth="lg">
             <BrowserRouter>
@@ -21,7 +23,7 @@ function App() {
                     <Box sx={{
                         padding: '1rem'
                     }}>
-                        <Button color="inherit" onClick={Dropdown}>Services</Button>
+                    <Dropdown selected={selected} setSelected={setSelected}/>
                         <MetricsRouter/>
                     </Box>
                 </AuthProvider>

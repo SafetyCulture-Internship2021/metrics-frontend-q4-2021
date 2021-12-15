@@ -1,5 +1,4 @@
 import React from "react";
-
 import { AppBar, Box, Toolbar, Typography, Button } from "@mui/material"
 import { useAuth } from "../hooks/auth";
 
@@ -14,7 +13,7 @@ export function Navigation() {
                 <AppBar position="static">
                     <Toolbar>
                         <Typography variant="h6" component="div" sx={{flexGrow: 1}}>
-                            Metrics Frontend
+                            HTTP Services
                         </Typography>
                         <Button color="inherit" onClick={logout}>Logout</Button>
                     </Toolbar>
