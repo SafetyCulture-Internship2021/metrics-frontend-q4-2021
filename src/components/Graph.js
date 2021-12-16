@@ -8,16 +8,59 @@ const ChartTypes = Object.freeze({
     Unknown: 'unknown',
     Line: 'line',
 });
+function getCartData(mocData) {
+    /*console.log(mocData.keys)*/
+    //const firstCart = Object.keys(mocData['0'])[0]
+    /*console.log(mocData)*/
+    //console.log(firstCart)
+    let graphData = []
+    const timestamps = Object.keys(mocData)
+    for (let ts_index in timestamps) {
+        let latencyArray = []
+        const currentTimeStamp = timestamps[ts_index]
+        let dataValues = mocData[currentTimeStamp]
+        //console.log(dataValues)
+        const pod_ids = Object.keys(dataValues)
+        for(let pod_index in pod_ids ){
+            const pod_id = pod_ids[pod_index]
+
+            const podLatency = mocData[currentTimeStamp][pod_id]['http']['latency']
+
+            latencyArray = latencyArray.concat(podLatency)
+
+        }
+
+        const latencyTotal = latencyArray.reduce((currentTotal, latencyVal) => currentTotal + latencyVal)
+        const latencyCount = latencyArray.length
+
+        const avgLatency = latencyTotal / latencyCount
+        console.log(avgLatency)
+        const graphDataItem = {
+            name: currentTimeStamp,
+            latency: avgLatency,
+        }
+        console.log(graphDataItem)
+        graphData.push(graphDataItem)
+
+    }
+
+    return graphData
+}
 
 function Graph() {
     const [metricsData, setMetricsData] = useState(null);
     const [displayChart] = useState(ChartTypes.Unknown);
+    const [graphData,setGraphData] = useState(null)
+    const mocGraphData = getCartData(mocData)
+
+
+
 
 
     useEffect(() => {
         axios.get('/metrics/test').then(res => {
             const metricsData = res.data;
-           /* console.log(metricsData)// data displays*/
+            /* console.log(metricsData)// data displays*/
             setMetricsData(metricsData)
         });
     }, []);
@@ -25,26 +68,29 @@ function Graph() {
 
     const dataArray = metricsData;
     const [moreData, setMoreData] = useState(metricsData);
-    /*console.log(dataArray)//data appears*/
+    console.log(dataArray)//data appears
 
-    useEffect(() => {
+   /* useEffect(() => {
+        let keys = Object.keys(metricsData)
         if (metricsData && metricsData.length > 0) {
-            for (let i = 0; i < 40; i++) {
-                dataArray[i] = {
-                    Latency: metricsData[i].avg_latency,
-                    MaxLatency: metricsData[i].avg_max,
-                    MinLatency: metricsData[i].avg_min,
-                    ServiceType: metricsData[i].service_type
-                }
+            for (let i = 0; i < keys.length; i++) {
+                let key = keys[i]
+                dataArray[key] = metricsData[key]
             }
             setMoreData(dataArray)
+            console.log(dataArray)
 
         }
-    }, [metricsData])
+    }, [metricsData])*/
+  /*  useEffect(() => {
 
-    console.log(moreData)//data appears
+        for (let i = 0; i < keys.length; i++){
+            let key = (keys[i]);
+            console.log(metricsData[key])
+            setGraphData(metricsData(key))
+        }
+    },[])*/
 
-    console.log(moreData)
 
     return (
         <div>
@@ -55,7 +101,7 @@ function Graph() {
 
                     width={1000}
                     height={400}
-                    data={moreData}
+                    data={mocGraphData}
                     margin={{top: 10, right: 30, left: 0, bottom: 0}}>
                     <CartesianGrid strokeDasharray="3 3"/>
                     <XAxis dataKey="name"/>
@@ -65,6 +111,7 @@ function Graph() {
                         type='monotone'
                         strokeWidth={2}
                         stroke='#8884d8'
+                        dataKey='latency'
                     />
 
 
