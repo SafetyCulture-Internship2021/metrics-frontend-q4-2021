@@ -1,14 +1,8 @@
-import React, { useState } from "react";
-import { Link } from 'react-router-dom';
-import Dropdown from './Dropdown'
 import { AppBar, Box, Toolbar, Typography, Button } from "@mui/material"
 import { useAuth } from "../hooks/auth";
 
 
 export function Navigation() {
-
-
-     
     const {isAuthenticated, logout} = useAuth();
     if (!isAuthenticated) {
         return <></>;
@@ -18,9 +12,8 @@ export function Navigation() {
                 <AppBar position="static">
                     <Toolbar>
                         <Typography variant="h6" component="div" sx={{flexGrow: 1}}>
-                            Metrics Frontend
+                            HTTP Services
                         </Typography>
-
                         <Button color="inherit" onClick={logout}>Logout</Button>
                     </Toolbar>
                 </AppBar>
