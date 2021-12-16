@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import axios from "axios";
 import {CartesianGrid, Line, LineChart, Tooltip, XAxis, YAxis} from 'recharts'
-import {mocData} from "./mocdata";
+
 
 
 function getCartData(mocData) {
@@ -12,7 +12,7 @@ function getCartData(mocData) {
         let latencyArray = []
         const currentTimeStamp = timestamps[ts_index]
         let dataValues = mocData[currentTimeStamp]
-        //console.log(dataValues)
+
         const pod_ids = Object.keys(dataValues)
         for(let pod_index in pod_ids ){
             const pod_id = pod_ids[pod_index]
@@ -68,8 +68,6 @@ function Graph() {
     }, []);
     /*console.log(metricsData)//data appears*/
 
-    const dataArray = metricsData;
-    const [moreData, setMoreData] = useState(metricsData);
     //console.log(dataArray)//data appears
 
    /* useEffect(() => {

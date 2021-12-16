@@ -4,15 +4,15 @@
 }
 /*"css-hip9hq-MuiPaper-root-MuiAppBar-root" was found suing inspect on the browser*/
 header.css-hip9hq-MuiPaper-root-MuiAppBar-root {
-  background-color: black;
+  background-color: #6559ff;
   color: rgb(224, 215, 215);
   text-align: left;
   padding: 10px;
 }
 /*"css-1y942vo-MuiButtonBase-root-MuiButton-root" was found using inspect on the browser*/
 button.css-1y942vo-MuiButtonBase-root-MuiButton-root {
-  background-color: rgb(16, 167, 187);
-  color: rgb(224, 215, 215);
+  background-color: yellow;
+  color: black;
 }
 
 button:hover.css-1y942vo-MuiButtonBase-root-MuiButton-root {
@@ -28,6 +28,7 @@ body {
   text-align: left;
   color: black;
   font-size: larger;
+  background-color: white;
 }
 .css-q5fqw0 {
   background-color: white;

@@ -51,7 +51,7 @@ export const Home = () => {
         return <div>Loading...</div>;
     }
 
-
+    console.log(pingData)
 
 
 return (
