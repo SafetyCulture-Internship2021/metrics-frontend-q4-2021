@@ -50,8 +50,10 @@ function getCartData(mocData) {
 
 function Graph() {
     const [metricsData, setMetricsData] = useState(null);
-    const mocGraphData = getCartData(mocData)
-
+    let mocGraphData
+    if(metricsData) {
+        mocGraphData = getCartData(metricsData)
+    }
 
 
 
