@@ -9,10 +9,7 @@ const ChartTypes = Object.freeze({
     Line: 'line',
 });
 function getCartData(mocData) {
-    /*console.log(mocData.keys)*/
-    //const firstCart = Object.keys(mocData['0'])[0]
-    /*console.log(mocData)*/
-    //console.log(firstCart)
+
     let graphData = []
     const timestamps = Object.keys(mocData)
     for (let ts_index in timestamps) {
@@ -33,11 +30,18 @@ function getCartData(mocData) {
         const latencyTotal = latencyArray.reduce((currentTotal, latencyVal) => currentTotal + latencyVal)
         const latencyCount = latencyArray.length
 
+        const maxArray = latencyArray => Math.max(...latencyArray);
+        const minArray = latencyArray => Math.min(...latencyArray);
         const avgLatency = latencyTotal / latencyCount
         console.log(avgLatency)
+
+
+
         const graphDataItem = {
             name: currentTimeStamp,
             latency: avgLatency,
+            minlatency: minArray(latencyArray),
+            maxlatency: maxArray(latencyArray)
         }
         console.log(graphDataItem)
         graphData.push(graphDataItem)
@@ -68,7 +72,7 @@ function Graph() {
 
     const dataArray = metricsData;
     const [moreData, setMoreData] = useState(metricsData);
-    console.log(dataArray)//data appears
+    //console.log(dataArray)//data appears
 
    /* useEffect(() => {
         let keys = Object.keys(metricsData)
@@ -95,28 +99,37 @@ function Graph() {
     return (
         <div>
 
-            {[ChartTypes.Line, ChartTypes.Unknown].indexOf(displayChart) !== -1 && (
 
                 <LineChart
 
                     width={1000}
-                    height={400}
-                    data={mocGraphData}
-                    margin={{top: 10, right: 30, left: 0, bottom: 0}}>
+                    height={800}
+                    data={mocGraphData}>
                     <CartesianGrid strokeDasharray="3 3"/>
                     <XAxis dataKey="name"/>
-                    <YAxis type="number" domain={[100, 300]}/>
+                    <YAxis type="number" domain={[0, 3]}/>
                     <Tooltip/>
                     <Line
                         type='monotone'
                         strokeWidth={2}
-                        stroke='#8884d8'
+                        stroke='#1cadeb'
                         dataKey='latency'
+                    />
+                    <Line
+                        type='monotone'
+                        strokeWidth={2}
+                        stroke='green'
+                        dataKey='minlatency'
+                    />
+                    <Line
+                        type='monotone'
+                        strokeWidth={2}
+                        stroke='red'
+                        dataKey='maxlatency'
                     />
 
 
                 </LineChart>
-            )}
         </div>
 
     )
