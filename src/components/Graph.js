@@ -4,10 +4,6 @@ import {CartesianGrid, Line, LineChart, Tooltip, XAxis, YAxis} from 'recharts'
 import {mocData} from "./mocdata";
 
 
-const ChartTypes = Object.freeze({
-    Unknown: 'unknown',
-    Line: 'line',
-});
 function getCartData(mocData) {
 
     let graphData = []
@@ -51,10 +47,9 @@ function getCartData(mocData) {
     return graphData
 }
 
+
 function Graph() {
     const [metricsData, setMetricsData] = useState(null);
-    const [displayChart] = useState(ChartTypes.Unknown);
-    const [graphData,setGraphData] = useState(null)
     const mocGraphData = getCartData(mocData)
 
 
@@ -64,6 +59,7 @@ function Graph() {
     useEffect(() => {
         axios.get('/metrics/test').then(res => {
             const metricsData = res.data;
+
             /* console.log(metricsData)// data displays*/
             setMetricsData(metricsData)
         });
@@ -99,7 +95,7 @@ function Graph() {
     return (
         <div>
 
-
+                <h3>Service Metrics Data (Min, Max, Average)</h3>
                 <LineChart
 
                     width={1000}

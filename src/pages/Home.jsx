@@ -12,7 +12,8 @@ export const Home = () => {
     const { authenticatedRequest } = useAuth();
     const [isLoading, setIsLoading] = useState(true);
     const [account, setAccount] = useState(null);
-    const [pingData, setPingData] = useState(null)
+    const [pingData, setPingData] = useState(null);
+    /*const [newData, setNewData] = useState(null)*/
     const [selected, setSelected] = useState('Services')
 
 
@@ -54,7 +55,7 @@ export const Home = () => {
 
 
 return (
-    <div>Welcome to the app {account.account_name}. service available( {} )
+    <div>Welcome to the app {account.account_name}
      <div><br/> This is the metrics front end that displays information
 
         <Dropdown selected={selected} setSelected={setSelected}/>  
