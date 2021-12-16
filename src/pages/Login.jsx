@@ -53,7 +53,7 @@ export const Login = () => {
             novalidate
         >
             <Title>
-                Metrics Frontend
+                HTTP Services
             </Title>
             <>
                 <TextField

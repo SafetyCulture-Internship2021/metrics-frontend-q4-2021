@@ -49,7 +49,7 @@ export const Register = () => {
             novalidate
         >
             <Title>
-                Metrics Frontend
+                HTTP Services
             </Title>
             <>
                 <TextField
